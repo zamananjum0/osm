@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OsmApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8&callback=initMap" async defer></script>
+  </head>
+
+  <body>
+  <div class="container">
+    <h1>Google Map</h1>
+    <%= yield %>
+    <br>
+    <p>We are using google developer map for getting lat lng from the click event, <br>
+      and then we send these lat lng to <a href="https://github.com/WebGents/open_street_map">gem 'open_street_map'</a>for getting information for this specific lat lng.</p>
+    <br>
+    <p>There is another approach for this task </p> <br>
+    <p>First we can download dataset of map from openstreemap site, and import it in our database. And then make an api request for this is get the same data.</p>
+    <p>But there is some hurdle which I had faced during this method,</p>
+    <p>First I have setup postgresql database with required extensions as btee_gist,hstore and postgis. And then import osm dump file in database. In this process there is no visual error for this, but I saw in database there is no data found, but tables were created. And now there is only issue for sending request to db for the lat lng(that can get on map.)  </p>
+  </div>
+  </body>
+</html>
